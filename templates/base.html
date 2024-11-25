@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Head] start -->
+
+<head>
+    <title>Papagei</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+          content="Flat Able is trending dashboard template made using Bootstrap 5 design framework. Flat Able is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies.">
+    <meta name="keywords"
+          content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard">
+    <meta name="author" content="phoenixcoded">
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="{% static 'assets/images/icon.png' %}" type="image/x-icon">
+    <!-- [Google Font : Public Sans] icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- [Tabler Icons] https://tablericons.com -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/tabler-icons.min.css' %}">
+    <!-- [Feather Icons] https://feathericons.com -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/feather.css' %}">
+    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome.css' %}">
+    <!-- [Material Icons] https://fonts.google.com/icons -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/material.css' %}">
+    <!-- [Template CSS Files] -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" id="main-style-link">
+    <link rel="stylesheet" href="{% static 'assets/css/style-preset.css' %}">
+
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body data-pc-preset="preset-1" data-pc-sidebar-theme="dark" data-pc-sidebar-caption="true" data-pc-direction="ltr"
+      data-pc-theme="light">
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="pc-loader" >
+        <div class="loader-fill"></div>
+    </div>
+</div>
+<div class="loader" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.8); align-items: center; justify-content: center; z-index: 1000;">
+    <div class="p-4 text-center">
+        <div class="custom-loader" style=""></div>
+        <h2 class="my-3 f-w-400">Loading..</h2>
+        <p class="mb-0">Please wait while we get your information </p>
+    </div>
+</div>
+<style>
+    @keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+</style>
+<!-- [ Pre-loader ] End -->
+<!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+        <div class="card pc-user-card">
+            <div class="card-body">
+                <div class="nav-user-image">
+                    <a  href="/">
+                        <img src="{% static 'assets/images/logo.png' %}" alt="user-image"
+                             class="user-avtar rounded-circle">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-content">
+            <ul class="pc-navbar">
+                <li class="pc-item">
+                    <a href="/" class="pc-link">
+                        <span class="pc-micon">
+                          <i class="ph-duotone ph-house"></i>
+                        </span>
+                        <span class="pc-mtext">Home</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="{% url 'list_files' %}" class="pc-link">
+                        <span class="pc-micon">
+                          <i class="ph-duotone ph-database"></i>
+                        </span>
+                        <span class="pc-mtext">Files</span>
+                    </a>
+                </li>
+            </ul>
+            </li>
+            
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+<header class="pc-header">
+    <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
+        <div class="me-auto pc-mob-drp">
+            <ul class="list-unstyled">
+                <!-- ======= Menu collapse Icon ===== -->
+                <li class="pc-h-item pc-sidebar-collapse">
+                    <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
+                        <i class="ph-duotone ph-list"></i>
+                    </a>
+                </li>
+                <li class="pc-h-item pc-sidebar-popup">
+                    <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
+                        <i class="ph-duotone ph-list"></i>
+                    </a>
+                </li>
+                <li class="dropdown pc-h-item">
+                    <a
+                            class="pc-head-link dropdown-toggle arrow-none m-0 trig-drp-search"
+                            data-bs-toggle="dropdown"
+                            href="#"
+                            role="button"
+                            aria-haspopup="false"
+                            aria-expanded="false"
+                    >
+                        <i class="ph-duotone ph-magnifying-glass"></i>
+                    </a>
+                    <div class="dropdown-menu pc-h-dropdown drp-search">
+                        <form class="px-1">
+                            <div class="form-group mb-0 d-flex align-items-center">
+                                <input type="search" class="form-control border-0 shadow-none"
+                                       placeholder="Search here. . .">
+                                <button class="btn btn-light-secondary btn-search">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- [Mobile Media Block end] -->
+        <div class="ms-auto">
+            <ul class="list-unstyled">
+                <li class="dropdown pc-h-item">
+                    <a
+                            class="pc-head-link dropdown-toggle arrow-none me-0"
+                            data-bs-toggle="dropdown"
+                            href="#"
+                            role="button"
+                            aria-haspopup="false"
+                            aria-expanded="false"
+                    >
+                        <i class="ph-duotone ph-sun-dim"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
+                        <a href="#!" class="dropdown-item" onclick="layout_change('dark')">
+                            <i class="ph-duotone ph-moon"></i>
+                            <span>Dark</span>
+                        </a>
+                        <a href="#!" class="dropdown-item" onclick="layout_change('light')">
+                            <i class="ph-duotone ph-sun-dim"></i>
+                            <span>Light</span>
+                        </a>
+                        <a href="#!" class="dropdown-item" onclick="layout_change_default()">
+                            <i class="ph-duotone ph-cpu"></i>
+                            <span>Default</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- [ Header ] end -->
+
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-sm-auto">
+                        <div class="page-header-title">
+                            <h5 class="mb-0">Home</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i
+                                    class="ph-duotone ph-house"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0)">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        {% block body %}
+        {% endblock %}
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+<footer class="pc-footer">
+    <div class="footer-wrapper container-fluid">
+        <div class="row">
+            <div class="col my-1">
+                <p class="m-0"
+                >Papagei is crafted with &#9829; by
+                    <a href="https://www.linkedin.com/in/mahmoud-alforawi-72b02a101/" target="_blank">Mahmoud
+                        Alforawi</a></p
+                >
+            </div>
+            <div class="col-auto my-1">
+                <ul class="list-inline footer-link mb-0">
+                    <li class="list-inline-item"><a href="{% url 'support' %}"
+                                                    target="_blank">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- [Page Specific JS] start -->
+<script src="{% static 'assets/js/plugins/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/dashboard-default.js' %}"></script>
+<!-- [Page Specific JS] end -->
+<!-- Required Js -->
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/simplebar.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/fonts/custom-font.js' %}"></script>
+<script src="{% static 'assets/js/pcoded.js' %}"></script>
+<script src="{% static 'assets/js/plugins/feather.min.js' %}"></script>
+
+
+<script>layout_change('light');</script>
+
+
+<script>layout_sidebar_change('dark');</script>
+
+
+<script>layout_header_change('dark');</script>
+
+
+<script>change_box_container('false');</script>
+
+
+<script>layout_caption_change('true');</script>
+
+
+<script>layout_rtl_change('false');</script>
+
+
+<script>preset_change("preset-1");</script>
+
+</body>
+<!-- [Body] end -->
+
+</html>

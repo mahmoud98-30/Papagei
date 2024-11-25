@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Enter Your Record</h5>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form id="uploadForm" method="post" multiple="multiple" enctype="multipart/form-data"
+                          action="{% url 'upload_media_file' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="form-label" for="inputTitle">Title</label>
+                                <input type="text" name="title" class="form-control" id="inputTitle"
+                                       placeholder="Title">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="form-label" for="exampleFormControlSelect1">Language</label>
+                                <select class="form-select" name="language" id="exampleFormControlSelect1">
+                                    <option value="de" selected>German</option>
+                                    {% for lang_code, label in language %}
+                                        <option value="{{ lang_code }}"
+                                                {% if form.data.language == lang_code %}selected{% endif %}>
+                                            {{ label }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="form-label" for="exampleFormControlSelect2">Model Size</label>
+                                <select class="form-select" name="model_size" id="exampleFormControlSelect2">
+                                    <option selected value="base">base</option>
+                                    {% for size, label in model_size_choices %}
+                                        <option value="{{ size }}"
+                                                {% if form.data.model_size == size %}selected{% endif %}>
+                                            {{ label }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="form-label" for="inputGroupFile02">Upload</label>
+                                <input type="file" name="audio" class="form-control" id="inputGroupFile02">
+                            </div>
+                        </div>
+                        <button type="submit" id="show-loader" class="btn btn-primary">Transcript</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+{#        <script>#}
+{#            document.addEventListener('DOMContentLoaded', function () {#}
+{#                const form = document.querySelector('#uploadForm'); // Form reference#}
+{#                const loader = document.querySelector('.loader'); // Loader reference#}
+{##}
+{#                if (form && loader) {#}
+{#                    form.addEventListener('submit', function (e) {#}
+{#                        e.preventDefault(); // Prevent default form submission#}
+{#                        const formData = new FormData(form); // Collect form data#}
+{##}
+{#                        // Show the loader#}
+{#                        fadeIn(loader, 10);#}
+{##}
+{#                        // Submit form using AJAX#}
+{#                        fetch(form.action, {#}
+{#                            method: 'POST',#}
+{#                            body: formData,#}
+{#                            headers: {#}
+{#                                'X-Requested-With': 'XMLHttpRequest', // Optional: For better server-side handling#}
+{#                            },#}
+{#                        })#}
+{#                            .then((response) => {#}
+{#                                fadeOut(loader, 10); // Hide the loader on response#}
+{#                                if (!response.ok) {#}
+{#                                    throw new Error(`HTTP error! Status: ${response.status}`);#}
+{#                                }#}
+{#                                return response.blob(); // Assuming transcription text is returned as a file#}
+{#                            })#}
+{#                            .then((fileBlob) => {#}
+{#                                // Create a download link for the transcription file#}
+{#                                const url = window.URL.createObjectURL(fileBlob);#}
+{#                                const a = document.createElement('a');#}
+{#                                a.href = url;#}
+{#                                a.download = 'transcription.txt';#}
+{#                                document.body.appendChild(a);#}
+{#                                a.click();#}
+{#                                a.remove();#}
+{#                                window.URL.revokeObjectURL(url); // Clean up the URL object#}
+{##}
+{#                            })#}
+{#                            .catch((error) => {#}
+{#                                fadeOut(loader, 10); // Hide loader in case of error#}
+{#                                alert(`Error: ${error.message}`);#}
+{#                            });#}
+{#                    });#}
+{#                }#}
+{##}
+{#                function fadeIn(element, timing) {#}
+{#                    let opacity = 0;#}
+{#                    element.style.display = 'flex';#}
+{#                    element.style.opacity = opacity;#}
+{#                    const fadeInInterval = setInterval(function () {#}
+{#                        if (opacity < 1) {#}
+{#                            opacity += 0.02;#}
+{#                            element.style.opacity = opacity;#}
+{#                        } else {#}
+{#                            clearInterval(fadeInInterval);#}
+{#                        }#}
+{#                    }, timing);#}
+{#                }#}
+{##}
+{#                function fadeOut(element, timing) {#}
+{#                    let opacity = 1;#}
+{#                    const fadeOutInterval = setInterval(function () {#}
+{#                        if (opacity > 0) {#}
+{#                            opacity -= 0.02;#}
+{#                            element.style.opacity = opacity;#}
+{#                        } else {#}
+{#                            element.style.display = 'none';#}
+{#                            clearInterval(fadeOutInterval);#}
+{#                        }#}
+{#                    }, timing);#}
+{#                }#}
+{#            });#}
+{#        </script>#}
+{% endblock %}
