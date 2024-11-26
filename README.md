@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/mahmoud98-30/Papagei/static/assets/images/logo.png" alt="Papagei Logo" width="250"/>
+    <img src="https://github.com/mahmoud98-30/Papagei/blob/main/static/assets/images/logo.png" alt="Papagei Logo" width="250"/>
 </div>
 
 # Papagei 🎙️📝 - Lecture Transcription Companion
